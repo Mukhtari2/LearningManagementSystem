@@ -18,4 +18,5 @@ public class Course {
     private String tittle;
     private String description;
     private Status status;
+    private Long teacherId;
 }
