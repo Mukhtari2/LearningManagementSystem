@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .build();
         User newUser = repository.save(user);
+
         return userMapper.toDto(newUser);
     }
 }
