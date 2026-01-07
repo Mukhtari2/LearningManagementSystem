@@ -20,6 +20,7 @@ public class AssignmentController {
     public ResponseEntity<AssignmentResponseDTO> viewAssignment (@RequestBody AssignmentRequestDTO assignmentRequestDTO) {
         AssignmentResponseDTO responseDTO = assignmentService.viewAssignment(assignmentRequestDTO);
         return ResponseEntity.ok(responseDTO);
+
     }
 
     @PostMapping("/submit")
