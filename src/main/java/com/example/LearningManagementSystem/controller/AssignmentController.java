@@ -10,14 +10,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/v1/assignment")
+@RequestMapping("api/v1/assignments")
 public class AssignmentController {
 
-    @Autowired
-    private AssignmentService assignmentService;
+
+    private final AssignmentService assignmentService;
+
+    public AssignmentController(AssignmentService assignmentService) {
+        this.assignmentService = assignmentService;
+    }
 
     @GetMapping
-    public ResponseEntity<AssignmentResponseDTO> viewAssignment (@RequestBody AssignmentRequestDTO assignmentRequestDTO) {
+    public ResponseEntity<AssignmentResponseDTO> viewAssignment (@PathVariable AssignmentRequestDTO assignmentRequestDTO) {
         AssignmentResponseDTO responseDTO = assignmentService.viewAssignment(assignmentRequestDTO);
         return ResponseEntity.ok(responseDTO);
 
