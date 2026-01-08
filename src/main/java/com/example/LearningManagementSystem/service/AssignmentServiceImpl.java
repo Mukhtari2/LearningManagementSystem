@@ -20,16 +20,17 @@ public class AssignmentServiceImpl implements AssignmentService {
     private final AssignmentMapper assignmentMapper;
 
     @Override
-    public AssignmentResponseDTO viewAssignment(AssignmentRequestDTO requestDTO) {
-        Course course = courseService.findByCourseId(requestDTO.getCourseId());
-        Assignment assignment = assignmentMapper.toEntity(requestDTO, course);
-        Assignment savedAssignment = assignmentRepository.save(assignment);
-        return assignmentMapper.toDto(savedAssignment);
+    public AssignmentResponseDTO viewAssignment(Long assignmentId) {
+        Assignment assignment = assignmentRepository.findById(assignmentId)
+                .orElseThrow(() -> new EntityNotFoundException
+                        ("Assignment with ID " + assignmentId + " not found "));
+
+        return assignmentMapper.toDto(assignment);
     }
 
-    @PreAuthorize("hasRole('STUDENT')")
+    @PreAuthorize("hasRole('TEACHER')")
     @Override
-    public AssignmentResponseDTO submitAssignment(AssignmentRequestDTO requestDTO) {
+    public AssignmentResponseDTO createAssignment(AssignmentRequestDTO requestDTO) {
         Course course = courseService.findByCourseId(requestDTO.getCourseId());
         if (course != null) {
             Assignment viewAssignment = assignmentMapper.toEntity(requestDTO, course);

@@ -6,8 +6,8 @@ import com.example.LearningManagementSystem.model.Assignment;
 
 
 public interface AssignmentService {
-    AssignmentResponseDTO viewAssignment(AssignmentRequestDTO requestDTO);
-    AssignmentResponseDTO submitAssignment(AssignmentRequestDTO requestDTO);
+    AssignmentResponseDTO viewAssignment(Long assignmentId);
+    AssignmentResponseDTO createAssignment(AssignmentRequestDTO requestDTO);
     Assignment findByAssignmentId(Long assignmentId);
 
 }
