@@ -6,5 +6,6 @@ import com.example.LearningManagementSystem.model.Assignment;
 import com.example.LearningManagementSystem.model.Submission;
 
 public interface SubmissionService {
+
     SubmissionResponseDTO submitAnswers(SubmissionRequestDTO requestDTO);
 }
