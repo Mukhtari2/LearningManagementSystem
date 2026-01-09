@@ -1,10 +1,11 @@
 package com.example.LearningManagementSystem.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
@@ -12,15 +13,10 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "submissions")
+@Document
 public class Submission {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @Id
     private Long id;
-
-    @ManyToOne()
-    @JoinColumn(name = "assignments_Id")
     private Assignment assignment;
     private Long studentId;
     private String fileUrl;

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @PostMapping("/register-user")
     public ResponseEntity<UserResponseDTO> registerUser (@RequestBody UserRequestDTO userRequestDTO){

@@ -1,15 +1,9 @@
 Spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/lms
-    username: postgres
-    password: Mukhtar2
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  data:
+    mongodb:
+      authentication-database=admin
+      username=rootuser
+      password=rootpass
+      database=Mukhtar2
+      port=27017
+      host=localhost

@@ -1,20 +1,17 @@
 package com.example.LearningManagementSystem.model;
 
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name ="lessons")
+@Document
 public class Lesson {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne()
-    @JoinColumn(name = "courses_Id")
     private Course course;
     private String title;
     private String contentUrl;

@@ -1,25 +1,20 @@
 package com.example.LearningManagementSystem.model;
 
 import com.example.LearningManagementSystem.Enum.Status;
-import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "courses")
+@Document
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String title;
     private String description;
     private Long teacherId;
-
-    @Enumerated(EnumType.STRING)
     private Status status;
 }
