@@ -1,7 +1,7 @@
 package com.example.LearningManagementSystem.controller;
 
 import com.example.LearningManagementSystem.dto.*;
-//import com.example.LearningManagementSystem.service.AssignmentService;
+import com.example.LearningManagementSystem.service.AssignmentService;
 import com.example.LearningManagementSystem.service.CourseService;
 //import com.example.LearningManagementSystem.service.LessonService;
 import com.example.LearningManagementSystem.service.LessonService;
@@ -22,7 +22,7 @@ public class TeacherController {
 
     private final CourseService courseService;
     private final LessonService lessonService;
-//    private final AssignmentService assignmentService;
+    private final AssignmentService assignmentService;
 
     @PostMapping("/registerCourse")
     public ResponseEntity<CourseResponseDTO> registerCourse (@RequestBody CourseRequestDTO courseRequestDTO){
@@ -35,10 +35,10 @@ public class TeacherController {
         LessonResponseDTO newLesson = lessonService.addLesson(lessonRequestDTO);
         return new ResponseEntity<>(newLesson, HttpStatus.CREATED);
     }
-//
-//    @PostMapping("/create-Assignment")
-//    public ResponseEntity<AssignmentResponseDTO> createAssignment (@RequestBody AssignmentRequestDTO assignmentRequestDTO) {
-//        AssignmentResponseDTO responseDTO = assignmentService.createAssignment(assignmentRequestDTO);
-//        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
-//    }
+
+    @PostMapping("/create-Assignment")
+    public ResponseEntity<AssignmentResponseDTO> createAssignment (@RequestBody AssignmentRequestDTO assignmentRequestDTO) {
+        AssignmentResponseDTO responseDTO = assignmentService.createAssignment(assignmentRequestDTO);
+        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
+    }
 }
