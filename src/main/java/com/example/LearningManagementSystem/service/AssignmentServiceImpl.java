@@ -34,7 +34,7 @@ public class AssignmentServiceImpl implements AssignmentService {
         Course course = courseService.findByCourseId(requestDTO.getCourseId());
         if (course != null) {
             Assignment viewAssignment = assignmentMapper.toEntity(requestDTO, course);
-            Assignment saveAssignment = assignmentRepository.save(viewAssignment);
+            Assignment saveAssignment = assignmentRepository.insert(viewAssignment);
             return assignmentMapper.toDto(saveAssignment);
         } else throw new ResourceNotFoundException
                 ("No course id found to view assignment");

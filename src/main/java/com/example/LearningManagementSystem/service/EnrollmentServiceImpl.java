@@ -27,7 +27,7 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         Course course = courseService.findByCourseId(request.getCourseId());
         if (course != null) {
             Enrollment enroll = enrollmentMapper.toEntity(request, course);
-            Enrollment savedEnrollment = enrollmentRepository.save(enroll);
+            Enrollment savedEnrollment = enrollmentRepository.insert(enroll);
             return enrollmentMapper.toDto(savedEnrollment);
         } else throw new ResourceNotFoundException("Course with ID " + request.getCourseId());
     }

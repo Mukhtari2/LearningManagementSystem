@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Course {
     @Id
-    private Long id;
+    private String id;
     private String title;
     private String description;
     private Long teacherId;

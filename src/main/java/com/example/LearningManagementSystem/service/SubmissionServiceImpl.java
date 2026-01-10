@@ -23,11 +23,12 @@ public class SubmissionServiceImpl implements SubmissionService{
     @Override
     public SubmissionResponseDTO submitAnswers(SubmissionRequestDTO requestDTO) {
         Assignment assignment = assignmentService.findByAssignmentId(requestDTO.getAssignmentId());
-        if (assignment != null){
+        if (assignment == null) {
+            throw new ResourceNotFoundException("No assignment Id found for this submission");
+        }
             Submission submission = submissionMapper.toEntity(requestDTO, assignment);
-            Submission newSubmission = submissionRepository.save(submission);
+            Submission newSubmission = submissionRepository.insert(submission);
             return submissionMapper.toDto(newSubmission);
-        }else throw new ResourceNotFoundException("No assignment Id found for this submission");
     }
 
 

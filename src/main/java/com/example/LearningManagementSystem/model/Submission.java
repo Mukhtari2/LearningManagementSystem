@@ -16,7 +16,7 @@ import java.util.Date;
 @Document
 public class Submission {
    @Id
-    private Long id;
+    private String id;
     private Assignment assignment;
     private Long studentId;
     private String fileUrl;

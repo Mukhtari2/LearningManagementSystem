@@ -1,9 +1,9 @@
 Spring:
   data:
     mongodb:
-      authentication-database=admin
-      username=rootuser
-      password=rootpass
-      database=Mukhtar2
-      port=27017
-      host=localhost
+      authentication-database: admin
+      username: rootuser
+      password: rootpass
+      database: Mukhtar2
+      port: 27017
+      host: localhost

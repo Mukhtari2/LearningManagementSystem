@@ -16,7 +16,7 @@ import java.util.Date;
 @Document
 public class Assignment {
     @Id
-    private Long id;
+    private String id;
     private Course course;
     private String title;
     private String description;

@@ -14,9 +14,13 @@ public interface SubmissionMapper {
     @Mapping(target = "assignment", source = "assignment")
     @Mapping(target = "studentId", source = "requestDTO.studentId")
     @Mapping(target = "answeredAt", source = "requestDTO.answeredAt")
-    @Mapping(target = "submittedAt", expression = "java(new Date(System.currentTimeMillis()))")
+    @Mapping(target = "fileUrl", source = "requestDTO.fileUrl")
+    @Mapping(target = "submittedAt", expression = "java(new Date())")
     @Mapping(target = "grade", source = "requestDTO.grade")
     @Mapping(target = "feedback", source = "requestDTO.feedback")
+
+
     Submission toEntity(SubmissionRequestDTO requestDTO, Assignment assignment);
+    @Mapping(target = "assignmentId", source = "assignment.id")
     SubmissionResponseDTO toDto(Submission submission);
 }

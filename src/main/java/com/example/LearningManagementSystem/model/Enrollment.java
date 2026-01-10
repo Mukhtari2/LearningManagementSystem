@@ -16,7 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Document
 public class Enrollment {
-    private Long id;
+    private String id;
     private Long studentId;
     private Course courseId;
     private Date enrolledAt;

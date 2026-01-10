@@ -1,6 +1,5 @@
 package com.example.LearningManagementSystem.dto;
 
-import com.example.LearningManagementSystem.model.Assignment;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 

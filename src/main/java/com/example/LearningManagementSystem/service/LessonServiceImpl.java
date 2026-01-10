@@ -29,7 +29,7 @@ public class LessonServiceImpl implements LessonService{
         Course course = courseService.findByCourseId(request.getCourseId());
         if (course != null) {
             Lesson newLesson = lessonMapper.toEntity(request, course);
-            Lesson savedLesson = repository.save(newLesson);
+            Lesson savedLesson = repository.insert(newLesson);
             return lessonMapper.toDto(savedLesson);
         }else throw new ResourceNotFoundException("No course Id available for adding lessson");
 
