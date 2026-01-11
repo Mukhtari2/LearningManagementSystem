@@ -10,6 +10,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -21,12 +23,23 @@ public class UserServiceImpl implements UserService {
     @PreAuthorize("hasRole('ADMIN')")
     @Override
     public UserResponseDTO register(UserRequestDTO request) {
-        User user = User.builder()
-                .name(request.getName())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .build();
-        User newUser = repository.insert(user);
-        return userMapper.toDto(newUser);
+//        User user = User.builder()
+//                .name(request.getName())
+//                .email(request.getEmail())
+//                .password(passwordEncoder.encode(request.getPassword()))
+//                .build();
+//        User newUser = repository.insert(user);
+//        return userMapper.toDto(newUser);
+
+        return Optional.of(request)
+                .map(req -> User.builder()
+                        .name(req.getName())
+                        .email(req.getEmail())
+                        .password(passwordEncoder.encode(req.getPassword()))
+                        .build())
+                .map(repository::insert)
+                .map(userMapper::toDto)
+                .orElseThrow();
+
     }
 }
