@@ -1,9 +1,9 @@
 package com.example.LearningManagementSystem.service;
 
-import com.example.LearningManagementSystem.dto.UserRequestDTO;
-import com.example.LearningManagementSystem.dto.UserResponseDTO;
+import com.example.LearningManagementSystem.authenticationAndAuthorization.AuthenticationRequest;
+import com.example.LearningManagementSystem.authenticationAndAuthorization.AuthenticationResponse;
 
 public interface UserService {
-    UserResponseDTO register(UserRequestDTO request);
+    AuthenticationResponse register(AuthenticationRequest request);
 
 }
