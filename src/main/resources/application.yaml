@@ -1,9 +1,12 @@
 Spring:
   data:
     mongodb:
-      authentication-database: admin
+      host: localhost
+      port: 27017
+      database: learning_management_db
       username: rootuser
       password: rootpass
-      database: Mukhtar2
-      host: mongo
-      port: 27017
+      authentication-database: admin
+
+
+
