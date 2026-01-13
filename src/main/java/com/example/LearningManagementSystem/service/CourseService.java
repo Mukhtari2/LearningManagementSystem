@@ -11,7 +11,7 @@ public interface CourseService {
 
     Course updateCourse();
 
-    Optional<Course> findOptionalByCourseId(Long courseId);
+    Optional<Course> findOptionalByCourseId(String courseId);
 
-    Course findByCourseId(Long courseId);
+    Course findByCourseId(String courseId);
 }

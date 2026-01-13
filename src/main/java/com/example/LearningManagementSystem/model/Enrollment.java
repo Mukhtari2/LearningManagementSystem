@@ -20,7 +20,7 @@ public class Enrollment {
     @Id
     private String id;
 
-    private Long studentId;
+    private String studentId;
 
     private Course courseId;
 

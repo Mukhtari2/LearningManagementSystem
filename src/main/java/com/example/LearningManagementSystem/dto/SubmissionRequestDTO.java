@@ -12,9 +12,9 @@ import java.util.Date;
 @AllArgsConstructor
 public class SubmissionRequestDTO {
 
-    private Long assignmentId;
+    private String assignmentId;
 
-    private Long studentId;
+    private String studentId;
 
     private String fileUrl;
 

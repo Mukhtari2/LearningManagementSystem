@@ -32,12 +32,17 @@ public class StudentController {
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
-    @GetMapping("/view/{assignmentId}")
-    public ResponseEntity<AssignmentResponseDTO> viewAssignment (@PathVariable Long assignmentId) {
+    @GetMapping("/view-submission/{assignmentId}")
+    public ResponseEntity<SubmissionResponseDTO> viewSubmission(@PathVariable String assignmentId){
+        SubmissionResponseDTO submissionResponse = submissionService.viewSubmission(assignmentId);
+        return ResponseEntity.ok(submissionResponse);
+    }
+
+    @GetMapping("/view-assignment/{assignmentId}")
+    public ResponseEntity<AssignmentResponseDTO> viewAssignment (@PathVariable String assignmentId) {
         AssignmentResponseDTO responseDTO = assignmentService.viewAssignment(assignmentId);
         return ResponseEntity.ok(responseDTO);
     }
-
 
 
 }

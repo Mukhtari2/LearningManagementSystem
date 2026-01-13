@@ -20,7 +20,7 @@ public class AssignmentServiceImpl implements AssignmentService {
     private final AssignmentMapper assignmentMapper;
 
     @Override
-    public AssignmentResponseDTO viewAssignment(Long assignmentId) {
+    public AssignmentResponseDTO viewAssignment(String assignmentId) {
         Assignment assignment = assignmentRepository.findById(assignmentId)
                 .orElseThrow(() -> new ResourceNotFoundException
                         ("Assignment with ID " + assignmentId + " not found "));
@@ -41,7 +41,7 @@ public class AssignmentServiceImpl implements AssignmentService {
     }
 
     @Override
-    public Assignment findByAssignmentId(Long assignmentId) {
+    public Assignment findByAssignmentId(String assignmentId) {
         return assignmentRepository.findById(assignmentId).orElseThrow();
     }
 

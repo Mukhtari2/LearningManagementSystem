@@ -32,7 +32,7 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public Course findByCourseId(Long courseId) {
+    public Course findByCourseId(String courseId) {
         return repository.findById(courseId).orElseThrow();
     }
 
@@ -43,7 +43,7 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public Optional<Course> findOptionalByCourseId(Long courseId) {
+    public Optional<Course> findOptionalByCourseId(String courseId) {
         return repository.findById(courseId);
     }
 }

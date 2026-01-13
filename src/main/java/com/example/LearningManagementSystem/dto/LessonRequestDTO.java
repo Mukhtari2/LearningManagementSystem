@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 public class LessonRequestDTO {
 
-    private Long courseId;
+    private String courseId;
 
     private String title;
 

@@ -9,9 +9,9 @@ import lombok.*;
 @RequiredArgsConstructor
 public class EnrollmentRequestDTO {
 
-    private Long studentId;
+    private String studentId;
 
-    private Long courseId;
+    private String courseId;
 
 }
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface SubmissionRepository extends MongoRepository<Submission, Long> {
+public interface SubmissionRepository extends MongoRepository<Submission, String> {
 
-    Optional<Submission>findById (Long id);
+    Optional<Submission> findById (String id);
 }

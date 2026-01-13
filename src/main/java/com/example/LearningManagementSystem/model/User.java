@@ -29,14 +29,12 @@ public class User implements UserDetails {
 
     private String password;
 
-    private List<Role> roles;
+    private Role roles;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
-                .toList();
+        return List.of(new SimpleGrantedAuthority("ROLE_" + roles.name()));
     }
 
     @Override

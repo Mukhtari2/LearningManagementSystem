@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,6 +42,28 @@ public class SubmissionServiceImpl implements SubmissionService{
 
     }
 
+    @PreAuthorize("hasRole('STUDENT')")
+    @Override
+    public SubmissionResponseDTO viewSubmission(String submissionId) {
+        Submission id = submissionRepository.findById(submissionId).orElseThrow
+                (() -> new ResourceNotFoundException
+                        ("Assignment with ID " + submissionId + " not found "));
 
+        return submissionMapper.toDto(id);
+    }
+
+
+    @PreAuthorize("hasRole('STUDENT')")
+    @Override
+    public List<SubmissionResponseDTO> viewAllSubmission() {
+        List<Submission> allSubmissions = submissionRepository.findAll();
+        List<SubmissionResponseDTO> submissions = new ArrayList<>();
+
+        for (Submission viewAll : allSubmissions){
+            SubmissionResponseDTO responseDTO = submissionMapper.toDto(viewAll);
+            submissions.add(responseDTO);
+        }
+        return submissions;
+    }
 
 }

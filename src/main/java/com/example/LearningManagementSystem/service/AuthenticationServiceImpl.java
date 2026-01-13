@@ -1,5 +1,6 @@
 package com.example.LearningManagementSystem.service;
 
+import com.example.LearningManagementSystem.Enum.Role;
 import com.example.LearningManagementSystem.authenticationAndAuthorization.AuthenticationRequest;
 import com.example.LearningManagementSystem.authenticationAndAuthorization.AuthenticationResponse;
 import com.example.LearningManagementSystem.authenticationAndAuthorization.JwtService;
@@ -22,13 +23,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @Override
-    public @Nullable AuthenticationResponse register(AuthenticationRequest request) {
+    public AuthenticationResponse register(AuthenticationRequest request) {
         User user = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .roles(Role.ADMIN)
                 .build();
         repository.insert(user);
         var jwtToken = jwtService.generateToken(user);
@@ -49,7 +51,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     }
 
-    public @Nullable AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),

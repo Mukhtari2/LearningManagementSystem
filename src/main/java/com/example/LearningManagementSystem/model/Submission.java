@@ -1,10 +1,12 @@
 package com.example.LearningManagementSystem.model;
 
+import com.example.LearningManagementSystem.Enum.Grade;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -20,13 +22,13 @@ public class Submission {
 
     private Assignment assignment;
 
-    private Long studentId;
+    private String studentId;
 
     private String fileUrl;
 
     private String answeredAt;
 
-    private Integer grade;
+    private Grade grade;
 
     private String feedback;
 

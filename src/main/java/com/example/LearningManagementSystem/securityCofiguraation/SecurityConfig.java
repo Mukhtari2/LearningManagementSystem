@@ -29,9 +29,9 @@ public class SecurityConfig {
 
                 // 2. Configure Authorization Rules
                 .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/api/v1/auth/**").hasRole("AUTH")
-                        .requestMatchers("/api/v1/teacher/**").hasRole("TEACHER")
-                        .requestMatchers("/api/v1/student/**").hasRole("STUDENT")
+                        .requestMatchers("/api/v1/auth/**").permitAll()
+//                        .requestMatchers("/api/v1/teacher/**").hasRole("TEACHER")
+//                        .requestMatchers("/api/v1/student/**").hasRole("STUDENT")
                         // All other requests require authentication
                         .anyRequest().authenticated()
                 )

@@ -12,9 +12,9 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class EnrollmentResponseDTO {
 
-    private Long id;
+    private String id;
 
-    private Long studentId;
+    private String studentId;
 
     private Course courseId;
 

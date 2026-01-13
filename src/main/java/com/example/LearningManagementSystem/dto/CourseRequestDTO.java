@@ -9,7 +9,7 @@ import lombok.*;
 @RequiredArgsConstructor
 public class CourseRequestDTO {
 
-    private Long id;
+    private String id;
 
     private String title;
 
@@ -17,6 +17,6 @@ public class CourseRequestDTO {
 
     private Status status;
 
-    private Long teacherId;
+    private String teacherId;
 
 }

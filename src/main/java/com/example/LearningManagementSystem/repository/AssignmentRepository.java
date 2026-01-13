@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface AssignmentRepository extends MongoRepository<Assignment, Long> {
-    Optional<Assignment> findById(Long assignmentId);
+public interface AssignmentRepository extends MongoRepository<Assignment, String> {
+    Optional<Assignment> findById(String assignmentId);
 }

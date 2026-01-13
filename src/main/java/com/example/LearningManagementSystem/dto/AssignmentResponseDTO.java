@@ -11,9 +11,9 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class AssignmentResponseDTO {
 
-    private Long id;
+    private String id;
 
-    private Long courseId;
+    private String courseId;
 
     private String title;
 

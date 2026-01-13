@@ -5,5 +5,5 @@ Spring:
       username: rootuser
       password: rootpass
       database: Mukhtar2
+      host: mongo
       port: 27017
-      host: localhost

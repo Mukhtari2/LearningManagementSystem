@@ -9,9 +9,9 @@ import lombok.*;
 @RequiredArgsConstructor
 public class LessonResponseDTO {
 
-    private Long id;
+    private String id;
 
-    private Long courseId;
+    private String courseId;
 
     private String title;
 

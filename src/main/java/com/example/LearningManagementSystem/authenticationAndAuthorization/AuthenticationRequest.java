@@ -1,5 +1,6 @@
 package com.example.LearningManagementSystem.authenticationAndAuthorization;
 
+import com.example.LearningManagementSystem.Enum.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,5 +13,6 @@ import lombok.NoArgsConstructor;
 public class AuthenticationRequest {
     private String name;
     private String email;
-    String password;
+    private String password;
+    private Role role;
 }

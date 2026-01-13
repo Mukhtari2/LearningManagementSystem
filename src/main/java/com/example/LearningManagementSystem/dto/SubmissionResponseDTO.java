@@ -10,11 +10,11 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class SubmissionResponseDTO {
 
-    private Long id;
+    private String id;
 
-    private Long assignmentId;
+    private String assignmentId;
 
-    private Long studentId;
+    private String studentId;
 
     private String fileUrl;
 
