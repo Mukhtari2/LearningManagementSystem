@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -30,16 +31,15 @@ public class SecurityConfig {
                 // 2. Configure Authorization Rules
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/auth/**").permitAll()
-//                        .requestMatchers("/api/v1/teacher/**").hasRole("TEACHER")
-//                        .requestMatchers("/api/v1/student/**").hasRole("STUDENT")
+                        .requestMatchers("/api/v1/teacher/**").hasRole("TEACHER")
+                        .requestMatchers("/api/v1/student/**").hasRole("STUDENT")
                         // All other requests require authentication
                         .anyRequest().authenticated()
                 )
 
                 // 3. Set Session Policy to Stateless (for JWT/API usage)
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
+                .httpBasic(Customizer.withDefaults())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
         // Uncomment and add your custom filter/provider here:
          .authenticationProvider(authenticationProvider)
