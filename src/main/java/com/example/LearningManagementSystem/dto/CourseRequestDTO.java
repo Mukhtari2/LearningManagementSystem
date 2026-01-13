@@ -1,5 +1,6 @@
 package com.example.LearningManagementSystem.dto;
 
+import com.example.LearningManagementSystem.Enum.Role;
 import com.example.LearningManagementSystem.Enum.Status;
 import lombok.*;
 
@@ -18,5 +19,7 @@ public class CourseRequestDTO {
     private Status status;
 
     private String teacherId;
+
+    private Role role;
 
 }

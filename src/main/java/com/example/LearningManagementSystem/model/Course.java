@@ -1,5 +1,6 @@
 package com.example.LearningManagementSystem.model;
 
+import com.example.LearningManagementSystem.Enum.Role;
 import com.example.LearningManagementSystem.Enum.Status;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -26,4 +27,5 @@ public class Course {
 
     private Status status;
 
+    private Role role;
 }

@@ -1,5 +1,6 @@
 package com.example.LearningManagementSystem.service;
 
+import com.example.LearningManagementSystem.Enum.Role;
 import com.example.LearningManagementSystem.dto.CourseRequestDTO;
 import com.example.LearningManagementSystem.dto.CourseResponseDTO;
 import com.example.LearningManagementSystem.mapper.CourseMapper;
@@ -26,6 +27,7 @@ public class CourseServiceImpl implements CourseService{
                 .description(requestDTO.getDescription())
                 .title(requestDTO.getTitle())
                 .teacherId(requestDTO.getTeacherId())
+                .role(Role.TEACHER)
                 .build();
         Course newCourse = repository.insert(course);
         return courseMapper.toDto(newCourse);
