@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface CourseService {
     CourseResponseDTO registerCourse(CourseRequestDTO requestDTO);
 
-    Course updateCourse();
+    CourseResponseDTO updateCourse(String courseId, CourseRequestDTO requestDTO);
 
     Optional<Course> findOptionalByCourseId(String courseId);
 

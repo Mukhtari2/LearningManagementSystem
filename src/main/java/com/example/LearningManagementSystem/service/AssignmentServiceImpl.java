@@ -5,11 +5,12 @@ import com.example.LearningManagementSystem.dto.AssignmentRequestDTO;
 import com.example.LearningManagementSystem.dto.AssignmentResponseDTO;
 import com.example.LearningManagementSystem.mapper.AssignmentMapper;
 import com.example.LearningManagementSystem.model.Assignment;
-import com.example.LearningManagementSystem.model.Course;
 import com.example.LearningManagementSystem.repository.AssignmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,11 +20,13 @@ public class AssignmentServiceImpl implements AssignmentService {
     private final AssignmentRepository assignmentRepository;
     private final AssignmentMapper assignmentMapper;
 
+
+    @PreAuthorize("hasRole('STUDENT')")
     @Override
-    public AssignmentResponseDTO viewAssignment(String assignmentId) {
-        Assignment assignment = assignmentRepository.findById(assignmentId)
+    public AssignmentResponseDTO viewAssignment(String courseId) {
+        Assignment assignment = assignmentRepository.findById(courseId)
                 .orElseThrow(() -> new ResourceNotFoundException
-                        ("Assignment with ID " + assignmentId + " not found "));
+                        ("Assignment with ID " + courseId + " not found "));
 
         return assignmentMapper.toDto(assignment);
     }
@@ -31,14 +34,13 @@ public class AssignmentServiceImpl implements AssignmentService {
     @PreAuthorize("hasRole('TEACHER')")
     @Override
     public AssignmentResponseDTO createAssignment(AssignmentRequestDTO requestDTO) {
-        Course course = courseService.findByCourseId(requestDTO.getCourseId());
-        if (course != null) {
-            Assignment viewAssignment = assignmentMapper.toEntity(requestDTO, course);
-            Assignment saveAssignment = assignmentRepository.insert(viewAssignment);
-            return assignmentMapper.toDto(saveAssignment);
-        } else throw new ResourceNotFoundException
-                ("No course id found to view assignment");
+        return Optional.ofNullable(courseService.findByCourseId(requestDTO.getCourseId()))
+                .map(course -> assignmentMapper.toEntity(requestDTO, course))
+                .map(assignmentRepository::insert)
+                .map(assignmentMapper::toDto)
+                .orElseThrow(() -> new ResourceNotFoundException("No course id found to view assignment"));
     }
+
 
     @Override
     public Assignment findByAssignmentId(String assignmentId) {

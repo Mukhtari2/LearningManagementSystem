@@ -56,14 +56,11 @@ public class SubmissionServiceImpl implements SubmissionService{
     @PreAuthorize("hasRole('STUDENT')")
     @Override
     public List<SubmissionResponseDTO> viewAllSubmission() {
-        List<Submission> allSubmissions = submissionRepository.findAll();
-        List<SubmissionResponseDTO> submissions = new ArrayList<>();
-
-        for (Submission viewAll : allSubmissions){
-            SubmissionResponseDTO responseDTO = submissionMapper.toDto(viewAll);
-            submissions.add(responseDTO);
+            return submissionRepository.findAll()
+                    .stream()
+                    .map(submissionMapper::toDto)
+                    .toList();
         }
-        return submissions;
-    }
+
 
 }

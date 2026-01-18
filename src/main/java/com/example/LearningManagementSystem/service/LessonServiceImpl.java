@@ -40,7 +40,14 @@ public class LessonServiceImpl implements LessonService{
                 .map(repository::insert)
                 .map(lessonMapper::toDto)
                 .orElseThrow(() -> new ResourceNotFoundException("No course Id available for adding lesson"));
-
     }
+
+    @Override
+    public LessonResponseDTO viewLesson(String lessonId) {
+        Lesson id = repository.findById(lessonId).orElseThrow(() -> new ResourceNotFoundException
+                ("Nolessson found with id " + lessonId));
+        return lessonMapper.toDto(id);
+    }
+
 }
 

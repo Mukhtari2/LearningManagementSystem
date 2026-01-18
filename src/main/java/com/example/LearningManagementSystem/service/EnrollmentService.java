@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface EnrollmentService {
     EnrollmentResponseDTO enrollPublishedCourse(EnrollmentRequestDTO request);
-    List<Enrollment> viewAllEnrolledCourses();
+    List<EnrollmentResponseDTO> viewAllEnrolledCourses();
 }

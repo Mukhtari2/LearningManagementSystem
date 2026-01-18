@@ -11,7 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,16 +26,16 @@ public class EnrollmentServiceImpl implements EnrollmentService {
     @PreAuthorize("hasRole('STUDENT')")
     @Override
     public EnrollmentResponseDTO enrollPublishedCourse(EnrollmentRequestDTO request) {
-        Course course = courseService.findByCourseId(request.getCourseId());
-        if (course != null) {
-            Enrollment enroll = enrollmentMapper.toEntity(request, course);
-            Enrollment savedEnrollment = enrollmentRepository.insert(enroll);
-            return enrollmentMapper.toDto(savedEnrollment);
-        } else throw new ResourceNotFoundException("Course with ID " + request.getCourseId());
+        return Optional.ofNullable(courseService.findByCourseId(request.getCourseId()))
+                .map(course -> enrollmentMapper.toEntity(request, course))
+                .map(enrollmentRepository::insert)
+                .map(enrollmentMapper::toDto)
+                .orElseThrow(() -> new ResourceNotFoundException("Course with ID " + request.getCourseId()));
     }
 
+    @PreAuthorize("hasRole('STUDENT')")
     @Override
-    public List<Enrollment> viewAllEnrolledCourses() {
-        return List.of();
+    public List<EnrollmentResponseDTO> viewAllEnrolledCourses() {
+     return enrollmentRepository.findAll().stream().map(enrollmentMapper::toDto).toList();
     }
 }
