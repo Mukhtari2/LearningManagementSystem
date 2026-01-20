@@ -20,6 +20,7 @@ public class StudentController {
     private final SubmissionService submissionService;
     private final AssignmentService assignmentService;
 
+
     @PostMapping("/enroll")
     public ResponseEntity<EnrollmentResponseDTO> enrolPublishedCourse(@RequestBody EnrollmentRequestDTO enrollmentRequestDTO) {
         EnrollmentResponseDTO enroll = enrollmentService.enrollPublishedCourse(enrollmentRequestDTO);
