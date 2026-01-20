@@ -4,16 +4,14 @@ logging:
     org.springframework.data.mongodb: DEBUG
 
 spring:
-  main:
-    allow-bean-definition-overriding: true
+  data:
+    mongodb:
+      url:  mongodb://localhost:27017/test
+      database: test
 
   # Standard way to disable security in tests without custom code
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 
-# Keep your custom property if your code specifically checks for it
-app:
-  security:
-    enabled: false
 

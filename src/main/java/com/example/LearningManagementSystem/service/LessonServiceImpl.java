@@ -1,10 +1,9 @@
 package com.example.LearningManagementSystem.service;
 
-import com.example.LearningManagementSystem.Exception.ResourceNotFoundException;
+import com.example.LearningManagementSystem.exception.ResourceNotFoundException;
 import com.example.LearningManagementSystem.dto.LessonRequestDTO;
 import com.example.LearningManagementSystem.dto.LessonResponseDTO;
 import com.example.LearningManagementSystem.mapper.LessonMapper;
-import com.example.LearningManagementSystem.model.Course;
 import com.example.LearningManagementSystem.model.Lesson;
 import com.example.LearningManagementSystem.repository.LessonRepository;
 
@@ -12,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.ReadOnlyFileSystemException;
 import java.util.Optional;
 
 

@@ -1,7 +1,7 @@
 package com.example.LearningManagementSystem.service;
 
 import com.example.LearningManagementSystem.Enum.Role;
-import com.example.LearningManagementSystem.Exception.ResourceNotFoundException;
+import com.example.LearningManagementSystem.exception.ResourceNotFoundException;
 import com.example.LearningManagementSystem.dto.CourseRequestDTO;
 import com.example.LearningManagementSystem.dto.CourseResponseDTO;
 import com.example.LearningManagementSystem.mapper.CourseMapper;
@@ -10,8 +10,6 @@ import com.example.LearningManagementSystem.repository.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

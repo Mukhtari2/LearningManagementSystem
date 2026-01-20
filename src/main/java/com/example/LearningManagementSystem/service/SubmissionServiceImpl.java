@@ -1,17 +1,15 @@
 package com.example.LearningManagementSystem.service;
 
-import com.example.LearningManagementSystem.Exception.ResourceNotFoundException;
+import com.example.LearningManagementSystem.exception.ResourceNotFoundException;
 import com.example.LearningManagementSystem.dto.SubmissionRequestDTO;
 import com.example.LearningManagementSystem.dto.SubmissionResponseDTO;
 import com.example.LearningManagementSystem.mapper.SubmissionMapper;
-import com.example.LearningManagementSystem.model.Assignment;
 import com.example.LearningManagementSystem.model.Submission;
 import com.example.LearningManagementSystem.repository.SubmissionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

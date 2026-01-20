@@ -1,11 +1,9 @@
 package com.example.LearningManagementSystem.service;
 
-import com.example.LearningManagementSystem.Exception.ResourceNotFoundException;
+import com.example.LearningManagementSystem.exception.ResourceNotFoundException;
 import com.example.LearningManagementSystem.dto.EnrollmentRequestDTO;
 import com.example.LearningManagementSystem.dto.EnrollmentResponseDTO;
 import com.example.LearningManagementSystem.mapper.EnrollmentMapper;
-import com.example.LearningManagementSystem.model.Course;
-import com.example.LearningManagementSystem.model.Enrollment;
 import com.example.LearningManagementSystem.repository.EnrollmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
